@@ -1,0 +1,1 @@
+Este é um repositório de aprendizado de jogos em Godot.

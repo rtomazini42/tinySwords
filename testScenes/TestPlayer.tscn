@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dirvcb61k8gh7"]
+
+[ext_resource type="PackedScene" uid="uid://bv4hkkgfxeoqy" path="res://player/player.tscn" id="1_h5g7r"]
+
+[node name="TestPlayer" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_h5g7r")]
+position = Vector2(331, 197)
+motion_mode = 1
+wall_min_slide_angle = 0.0
