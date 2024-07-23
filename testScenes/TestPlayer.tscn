@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dirvcb61k8gh7"]
+[gd_scene load_steps=5 format=3 uid="uid://dirvcb61k8gh7"]
 
 [ext_resource type="PackedScene" uid="uid://bv4hkkgfxeoqy" path="res://player/player.tscn" id="1_h5g7r"]
 [ext_resource type="PackedScene" uid="uid://cjkgfc8hv535h" path="res://enemies/pawn.tscn" id="2_677f2"]
+[ext_resource type="PackedScene" uid="uid://douuophmfnwf5" path="res://enemies/globin.tscn" id="3_m2vha"]
+[ext_resource type="PackedScene" uid="uid://dcsfj4cyqha8a" path="res://enemies/sheep.tscn" id="4_di6eo"]
 
 [node name="TestPlayer" type="Node2D"]
 
@@ -21,3 +23,15 @@ position = Vector2(763, 588)
 
 [node name="pawn4" parent="." instance=ExtResource("2_677f2")]
 position = Vector2(74, 489)
+
+[node name="Globin" parent="." instance=ExtResource("3_m2vha")]
+position = Vector2(-204, 157)
+
+[node name="sheep" parent="." instance=ExtResource("4_di6eo")]
+position = Vector2(-159, 534)
+
+[node name="sheep2" parent="." instance=ExtResource("4_di6eo")]
+position = Vector2(349, -30)
+
+[node name="sheep3" parent="." instance=ExtResource("4_di6eo")]
+position = Vector2(1231, 156)

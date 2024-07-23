@@ -1,7 +1,12 @@
 extends CharacterBody2D
 
 @export	var speed: float = 3
+
+@export var sword_damage: int = 2
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var sword_area: Area2D = $swordArea
 
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -32,12 +37,12 @@ func _process(delta: float) -> void:
 			else:
 				animation_player.play("idle")
 				
-	#girar sprite
-	
-	if input_vector.x > 0:
-		sprite.flip_h = false
-	elif input_vector.x < 0:
-		sprite.flip_h = true
+		#girar sprite
+		
+		if input_vector.x > 0:
+			sprite.flip_h = false
+		elif input_vector.x < 0:
+			sprite.flip_h = true
 
 
 	#ataque
@@ -65,5 +70,28 @@ func attack() -> void:
 	animation_player.play("attack_side_1")
 	ataccking_cooldown = 0.6
 	is_ataccking = true
-	pass
+	#chamada de deal demage lá na animationPlayer
+
  
+func deal_damage_to_enemies() -> void:
+	var bodies = sword_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemies"):
+			var enemy: Enemy = body
+			
+			var direction_to_enemy = (enemy.position - position).normalized()
+			var attack_direction: Vector2
+			if sprite.flip_h:
+				attack_direction = Vector2.LEFT
+			else:
+				attack_direction = Vector2.RIGHT
+				
+			var dot_product = direction_to_enemy.dot(attack_direction)
+			if dot_product >= 0.1:
+				enemy.demage(sword_damage)
+	
+#	var enemies = get_tree().get_nodes_in_group("enemies")
+#	for enemy in enemies:
+#		enemy.demage(sword_damage)
+#	#print("Enemies: ", enemies.size())
+#	pass
