@@ -12,6 +12,9 @@ var is_ataccking: bool = false
 var ataccking_cooldown: float = 0.0
 
 func _process(delta: float) -> void:
+	#mandar para o GameManager a posição do jogador
+	GameManager.player_position = position
+	
 	#obter entrada
 	read_input()
 	if is_ataccking:

@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjkgfc8hv535h"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_8x55l"]
+[ext_resource type="Script" path="res://enemies/comportamentos/follow_player.gd" id="1_crqge"]
+[ext_resource type="Texture2D" uid="uid://bpnuxj3kgnugi" path="res://addons/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="1_i54ry"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shrhs"]
+radius = 24.0832
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwvkg"]
+atlas = ExtResource("1_i54ry")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyqhg"]
+atlas = ExtResource("1_i54ry")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p4c6"]
+atlas = ExtResource("1_i54ry")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0d2y"]
+atlas = ExtResource("1_i54ry")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm0ty"]
+atlas = ExtResource("1_i54ry")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7aew"]
+atlas = ExtResource("1_i54ry")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sftjc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwvkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyqhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p4c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0d2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nm0ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7aew")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="pawn" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_8x55l")
+
+[node name="Comportamento" type="Node" parent="."]
+script = ExtResource("1_crqge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26)
+scale = Vector2(0.714766, -1.07911)
+shape = SubResource("CircleShape2D_shrhs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
+sprite_frames = SubResource("SpriteFrames_sftjc")
+autoplay = "default"
+frame_progress = 0.564064
