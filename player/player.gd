@@ -1,20 +1,40 @@
+class_name Player
+
 extends CharacterBody2D
 
+@export_category("Life")
+@export var health: int = 100
+@export var max_health: int = 200
+@export var death_prefab: PackedScene
+
+@export_category("Movement")
 @export	var speed: float = 3
 
+@export_category("Sword")
 @export var sword_damage: int = 2
+@export var hitbox_cooldown = 3
+
+@export_category("Ritual")
+@export var ritual_damage: int = 5
+@export var ritual_interval: float = 30
+@export var ritual_scene: PackedScene
+#dano
+#intervalo
+#cena
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 @onready var sword_area: Area2D = $swordArea
-
+@onready var hitbox_area: Area2D = $HitboxArea
 @onready var sprite: Sprite2D = $Sprite2D
+
 
 var input_vector: Vector2 = Vector2(0,0)
 var is_running: bool = false
 var was_running: bool = false
 var is_ataccking: bool = false
 var ataccking_cooldown: float = 0.0
+
+var ritual_cooldown: float = 30
 
 func _process(delta: float) -> void:
 	#mandar para o GameManager a posição do jogador
@@ -48,8 +68,25 @@ func _process(delta: float) -> void:
 	#ataque
 	if Input.is_action_just_released("attack"):
 		attack()
+		
+	#processar dano
+	update_hitbox_detection(delta)		
+	
+	#ritual
+	update_ritual(delta)
 			
 			
+func update_ritual(delta: float)-> void:
+	ritual_cooldown-=delta
+	if ritual_cooldown>0: return
+	
+	ritual_cooldown = ritual_interval
+	
+	#criar ritual e colocar posição no player
+	var ritual = ritual_scene.instantiate()
+	ritual.demage_amnt = ritual_damage
+	add_child(ritual)
+	
 func read_input():
 	input_vector = Input.get_vector("move_left","move_right","move_up","move_down", 0.15)
 		#atualizar is runnin
@@ -87,7 +124,7 @@ func deal_damage_to_enemies() -> void:
 				attack_direction = Vector2.RIGHT
 				
 			var dot_product = direction_to_enemy.dot(attack_direction)
-			if dot_product >= 0.1:
+			if dot_product >= 0.0:
 				enemy.demage(sword_damage)
 	
 #	var enemies = get_tree().get_nodes_in_group("enemies")
@@ -95,3 +132,51 @@ func deal_damage_to_enemies() -> void:
 #		enemy.demage(sword_damage)
 #	#print("Enemies: ", enemies.size())
 #	pass
+
+func update_hitbox_detection(delta: float) -> void:
+	# temporizador
+	hitbox_cooldown -= delta
+	if hitbox_cooldown > 0: return
+	
+	#frêquencia
+	hitbox_cooldown = 0.5
+	
+	#detectar inimigos
+	var bodies = hitbox_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemies"):
+			var enemy: Enemy = body
+			var demage_amount = 1
+			demage(demage_amount)
+	
+
+func demage(amount: int) -> void:
+	if health <= 0: return
+	health -= amount
+	print("Player atingido por dano: ",amount ," saúde atual: ",health)
+	
+	#piscar inimigo
+	modulate = Color.RED
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self,"modulate",Color.WHITE, 0.3) #animar entre coisas a->b
+#
+	if health <= 0:
+		die()
+		
+	
+func die() -> void:
+	if death_prefab:
+		var death_object = death_prefab.instantiate()
+		death_object.position = position
+		get_parent().add_child(death_object)
+	queue_free()
+
+func heal(amount: int) -> int:
+	health += amount
+	if health > max_health:
+		health = max_health
+		
+	print("player recebeu cura ", health)
+	return health

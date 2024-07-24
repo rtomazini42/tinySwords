@@ -1,0 +1,164 @@
+[gd_scene load_steps=10 format=3 uid="uid://bg25wpempp0ap"]
+
+[ext_resource type="Script" path="res://misc/ritual.gd" id="1_3kflv"]
+[ext_resource type="Texture2D" uid="uid://d27iksdvg0xlb" path="res://addons/Kenney particle/circle_03.png" id="1_xj7k4"]
+[ext_resource type="Texture2D" uid="uid://clw8xk2inxv3" path="res://addons/Kenney particle/light_02.png" id="2_uc4m5"]
+[ext_resource type="Texture2D" uid="uid://t0nfigd1df6x" path="res://addons/Kenney particle/magic_02.png" id="3_etpjq"]
+
+[sub_resource type="Animation" id="Animation_46ntk"]
+resource_name = "default"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Magic02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.55334, 3.14159, 4.71239, 6.28319, 7.85398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Light02:modulate")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1.5, 2.5, 3.5, 4.5, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"deal_demage"
+}, {
+"args": [],
+"method": &"deal_demage"
+}, {
+"args": [],
+"method": &"deal_demage"
+}, {
+"args": [],
+"method": &"deal_demage"
+}, {
+"args": [],
+"method": &"deal_demage"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fwkvs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Magic02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Light02:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cwhu4"]
+_data = {
+"RESET": SubResource("Animation_fwkvs"),
+"default": SubResource("Animation_46ntk")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_huoak"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ew4gl"]
+radius = 186.356
+
+[node name="Ritual" type="Node2D"]
+scale = Vector2(1.92, 1.92)
+script = ExtResource("1_3kflv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_cwhu4")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Circle03" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 0.113725, 0.117647, 1)
+material = SubResource("CanvasItemMaterial_huoak")
+scale = Vector2(1, 1)
+texture = ExtResource("1_xj7k4")
+
+[node name="Light02" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_huoak")
+scale = Vector2(1, 1)
+texture = ExtResource("2_uc4m5")
+
+[node name="Magic02" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 0.113725, 0.117647, 1)
+material = SubResource("CanvasItemMaterial_huoak")
+scale = Vector2(1, 1)
+texture = ExtResource("3_etpjq")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(89585, 91668.5)
+shape = SubResource("CircleShape2D_ew4gl")
+debug_color = Color(0, 0.6, 0.701961, 0)

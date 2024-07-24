@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dirvcb61k8gh7"]
+[gd_scene load_steps=6 format=3 uid="uid://dirvcb61k8gh7"]
 
 [ext_resource type="PackedScene" uid="uid://bv4hkkgfxeoqy" path="res://player/player.tscn" id="1_h5g7r"]
 [ext_resource type="PackedScene" uid="uid://cjkgfc8hv535h" path="res://enemies/pawn.tscn" id="2_677f2"]
 [ext_resource type="PackedScene" uid="uid://douuophmfnwf5" path="res://enemies/globin.tscn" id="3_m2vha"]
 [ext_resource type="PackedScene" uid="uid://dcsfj4cyqha8a" path="res://enemies/sheep.tscn" id="4_di6eo"]
+[ext_resource type="PackedScene" uid="uid://d0s0iqlr65a7t" path="res://misc/meat.tscn" id="5_xgui8"]
 
 [node name="TestPlayer" type="Node2D"]
 
@@ -35,3 +36,7 @@ position = Vector2(349, -30)
 
 [node name="sheep3" parent="." instance=ExtResource("4_di6eo")]
 position = Vector2(1231, 156)
+
+[node name="skull" parent="." instance=ExtResource("5_xgui8")]
+position = Vector2(498, 193)
+regeneration_amount = 20
