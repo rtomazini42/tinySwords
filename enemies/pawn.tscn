@@ -78,3 +78,6 @@ position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_sftjc")
 autoplay = "default"
 frame_progress = 0.925737
+
+[node name="DemageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -58)

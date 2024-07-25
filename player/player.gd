@@ -26,7 +26,7 @@ extends CharacterBody2D
 @onready var sword_area: Area2D = $swordArea
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var sprite: Sprite2D = $Sprite2D
-
+@onready var health_progress_bar: ProgressBar = $HealthProgressBar
 
 var input_vector: Vector2 = Vector2(0,0)
 var is_running: bool = false
@@ -35,6 +35,11 @@ var is_ataccking: bool = false
 var ataccking_cooldown: float = 0.0
 
 var ritual_cooldown: float = 30
+
+signal meat_collected(value:int)
+
+func _ready():
+	GameManager.player = self
 
 func _process(delta: float) -> void:
 	#mandar para o GameManager a posição do jogador
@@ -74,6 +79,10 @@ func _process(delta: float) -> void:
 	
 	#ritual
 	update_ritual(delta)
+	
+	#atualizar health bar
+	health_progress_bar.max_value = max_health
+	health_progress_bar.value = health
 			
 			
 func update_ritual(delta: float)-> void:
@@ -146,7 +155,7 @@ func update_hitbox_detection(delta: float) -> void:
 	for body in bodies:
 		if body.is_in_group("enemies"):
 			var enemy: Enemy = body
-			var demage_amount = 1
+			var demage_amount = 3
 			demage(demage_amount)
 	
 

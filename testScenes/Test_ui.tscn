@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://7d83c7v54ubh"]
+
+[ext_resource type="PackedScene" uid="uid://bv4hkkgfxeoqy" path="res://player/player.tscn" id="1_yqw1t"]
+[ext_resource type="PackedScene" uid="uid://douuophmfnwf5" path="res://enemies/globin.tscn" id="3_v4n6u"]
+[ext_resource type="PackedScene" uid="uid://i2d3lssiay38" path="res://Ui/game_ui.tscn" id="4_t5tch"]
+[ext_resource type="PackedScene" uid="uid://d0s0iqlr65a7t" path="res://misc/meat.tscn" id="5_5hbxd"]
+
+[node name="TestPlayer" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_yqw1t")]
+position = Vector2(625, 206)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+
+[node name="Globin" parent="." instance=ExtResource("3_v4n6u")]
+position = Vector2(26, 608)
+
+[node name="meat" parent="." instance=ExtResource("5_5hbxd")]
+position = Vector2(498, 193)
+
+[node name="meat2" parent="." instance=ExtResource("5_5hbxd")]
+position = Vector2(224, 251)
+
+[node name="GameUI" parent="." instance=ExtResource("4_t5tch")]

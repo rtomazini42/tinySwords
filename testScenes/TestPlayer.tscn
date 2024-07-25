@@ -39,4 +39,3 @@ position = Vector2(1231, 156)
 
 [node name="skull" parent="." instance=ExtResource("5_xgui8")]
 position = Vector2(498, 193)
-regeneration_amount = 20

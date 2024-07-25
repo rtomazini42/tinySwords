@@ -14,5 +14,5 @@ func on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		var player: Player = body
 		player.heal(regeneration_amount)
-	print(body)
-	queue_free()
+		player.meat_collected.emit(regeneration_amount)
+		queue_free()

@@ -63,7 +63,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_sxhwm"]
 radius = 16.8301
 
-[node name="skull" type="AnimatedSprite2D"]
+[node name="meat" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_lpyk5")
 frame = 6
 frame_progress = 1.0
