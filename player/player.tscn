@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bg25wpempp0ap" path="res://misc/ritual.tscn" id="3_ryfcs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agk71"]
-radius = 19.0
-height = 58.0
+radius = 13.0
+height = 28.0
 
 [sub_resource type="Animation" id="Animation_1wxkx"]
 length = 0.001
@@ -276,7 +276,7 @@ hframes = 6
 vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -25)
+position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_agk71")
 debug_color = Color(0, 0.6, 0.701961, 0.121569)
 

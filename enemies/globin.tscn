@@ -5,8 +5,9 @@
 [ext_resource type="Script" path="res://enemies/comportamentos/follow_player.gd" id="3_hhtg7"]
 [ext_resource type="Texture2D" uid="uid://cjdkyrsrwxqwi" path="res://addons/Tiny Swords/Factions/Goblins/Troops/Torch/Yellow/Torch_Yellow.png" id="4_qj7p1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_shrhs"]
-radius = 37.786
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dr0y7"]
+radius = 24.3874
+height = 48.7747
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_828yb"]
 atlas = ExtResource("4_qj7p1")
@@ -70,9 +71,10 @@ script = ExtResource("3_hhtg7")
 speed = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -26)
+position = Vector2(0.657895, -9.86842)
+rotation = 1.59399
 scale = Vector2(0.714766, -1.07911)
-shape = SubResource("CircleShape2D_shrhs")
+shape = SubResource("CapsuleShape2D_dr0y7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -31)

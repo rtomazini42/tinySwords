@@ -6,6 +6,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_b65nf"]
 font_names = PackedStringArray("Old London")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_hvrjh"]
 font = SubResource("SystemFont_b65nf")
@@ -25,6 +26,7 @@ region_rect = Rect2(32, 48, 128, 120)
 
 [sub_resource type="SystemFont" id="SystemFont_5nksk"]
 font_names = PackedStringArray("Old London")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_54gti"]
 font = SubResource("SystemFont_5nksk")

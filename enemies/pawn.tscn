@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8jt2weanfnhc" path="res://misc/skull.tscn" id="2_7agt5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shrhs"]
-radius = 24.0832
+radius = 7.05641
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwvkg"]
 atlas = ExtResource("1_i54ry")
@@ -69,8 +69,8 @@ script = ExtResource("1_crqge")
 speed = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -26)
-scale = Vector2(0.714766, -1.07911)
+position = Vector2(-7.62939e-06, -5)
+scale = Vector2(-2.65056, -1.43911)
 shape = SubResource("CircleShape2D_shrhs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
