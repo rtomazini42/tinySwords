@@ -5,6 +5,45 @@
 [ext_resource type="Texture2D" uid="uid://clw8xk2inxv3" path="res://addons/Kenney particle/light_02.png" id="2_uc4m5"]
 [ext_resource type="Texture2D" uid="uid://t0nfigd1df6x" path="res://addons/Kenney particle/magic_02.png" id="3_etpjq"]
 
+[sub_resource type="Animation" id="Animation_fwkvs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Magic02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Light02:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_46ntk"]
 resource_name = "default"
 length = 5.5
@@ -74,45 +113,6 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_fwkvs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Magic02:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/Light02:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cwhu4"]
 _data = {
 "RESET": SubResource("Animation_fwkvs"),
@@ -140,19 +140,16 @@ libraries = {
 [node name="Circle03" type="Sprite2D" parent="Node2D"]
 modulate = Color(1, 0.113725, 0.117647, 1)
 material = SubResource("CanvasItemMaterial_huoak")
-scale = Vector2(1, 1)
 texture = ExtResource("1_xj7k4")
 
 [node name="Light02" type="Sprite2D" parent="Node2D"]
 modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_huoak")
-scale = Vector2(1, 1)
 texture = ExtResource("2_uc4m5")
 
 [node name="Magic02" type="Sprite2D" parent="Node2D"]
 modulate = Color(1, 0.113725, 0.117647, 1)
 material = SubResource("CanvasItemMaterial_huoak")
-scale = Vector2(1, 1)
 texture = ExtResource("3_etpjq")
 
 [node name="Area2D" type="Area2D" parent="."]

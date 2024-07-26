@@ -16,7 +16,7 @@ extends CharacterBody2D
 
 @export_category("Ritual")
 @export var ritual_damage: int = 5
-@export var ritual_interval: float = 30
+@export var ritual_interval: float = 20
 @export var ritual_scene: PackedScene
 #dano
 #intervalo
@@ -40,6 +40,7 @@ signal meat_collected(value:int)
 
 func _ready():
 	GameManager.player = self
+	meat_collected.connect(func(value: int): GameManager.meat_counter += 1)
 
 func _process(delta: float) -> void:
 	#mandar para o GameManager a posição do jogador
@@ -162,7 +163,7 @@ func update_hitbox_detection(delta: float) -> void:
 func demage(amount: int) -> void:
 	if health <= 0: return
 	health -= amount
-	print("Player atingido por dano: ",amount ," saúde atual: ",health)
+	#print("Player atingido por dano: ",amount ," saúde atual: ",health)
 	
 	#piscar inimigo
 	modulate = Color.RED
@@ -176,6 +177,7 @@ func demage(amount: int) -> void:
 		
 	
 func die() -> void:
+	GameManager.end_game()
 	if death_prefab:
 		var death_object = death_prefab.instantiate()
 		death_object.position = position
@@ -187,5 +189,5 @@ func heal(amount: int) -> int:
 	if health > max_health:
 		health = max_health
 		
-	print("player recebeu cura ", health)
+	#print("player recebeu cura ", health)
 	return health

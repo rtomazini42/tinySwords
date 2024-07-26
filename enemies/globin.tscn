@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://douuophmfnwf5"]
+[gd_scene load_steps=15 format=3 uid="uid://douuophmfnwf5"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_eaok5"]
 [ext_resource type="PackedScene" uid="uid://b8jt2weanfnhc" path="res://misc/skull.tscn" id="2_5iolu"]
 [ext_resource type="Script" path="res://enemies/comportamentos/follow_player.gd" id="3_hhtg7"]
+[ext_resource type="PackedScene" uid="uid://d0s0iqlr65a7t" path="res://misc/meat.tscn" id="3_w7iww"]
+[ext_resource type="PackedScene" uid="uid://135gr11kby0r" path="res://misc/gold_meat.tscn" id="4_mvie8"]
 [ext_resource type="Texture2D" uid="uid://cjdkyrsrwxqwi" path="res://addons/Tiny Swords/Factions/Goblins/Troops/Torch/Yellow/Torch_Yellow.png" id="4_qj7p1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dr0y7"]
@@ -65,6 +67,9 @@ motion_mode = 1
 script = ExtResource("1_eaok5")
 health = 20
 death_prefab = ExtResource("2_5iolu")
+drop_chance = 0.25
+drop_items = Array[PackedScene]([ExtResource("3_w7iww"), ExtResource("4_mvie8")])
+drop_chances = Array[float]([80.0, 20.0])
 
 [node name="Comportamento" type="Node" parent="."]
 script = ExtResource("3_hhtg7")

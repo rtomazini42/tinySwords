@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjkgfc8hv535h"]
+[gd_scene load_steps=14 format=3 uid="uid://cjkgfc8hv535h"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_8x55l"]
 [ext_resource type="Script" path="res://enemies/comportamentos/follow_player.gd" id="1_crqge"]
 [ext_resource type="Texture2D" uid="uid://bpnuxj3kgnugi" path="res://addons/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="1_i54ry"]
 [ext_resource type="PackedScene" uid="uid://b8jt2weanfnhc" path="res://misc/skull.tscn" id="2_7agt5"]
+[ext_resource type="PackedScene" uid="uid://d0s0iqlr65a7t" path="res://misc/meat.tscn" id="3_xof0c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shrhs"]
 radius = 7.05641
@@ -63,6 +64,8 @@ motion_mode = 1
 script = ExtResource("1_8x55l")
 health = 4
 death_prefab = ExtResource("2_7agt5")
+drop_chance = 0.1
+drop_items = Array[PackedScene]([ExtResource("3_xof0c")])
 
 [node name="Comportamento" type="Node" parent="."]
 script = ExtResource("1_crqge")

@@ -266,7 +266,6 @@ bg_color = Color(0.72549, 0, 0, 1)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_v45wb")
 death_prefab = ExtResource("2_p5eim")
-ritual_interval = 40.0
 ritual_scene = ExtResource("3_ryfcs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
